@@ -5,11 +5,7 @@ import { motion } from 'framer-motion'
 import { Check, CreditCard, Lock, RotateCcw, Phone } from 'lucide-react'
 import Button from './Button'
 
-interface PricingSectionProps {
-  onContactSales: () => void
-}
-
-export default function PricingSection({ onContactSales }: PricingSectionProps) {
+export default function PricingSection() {
   const [isAnnual, setIsAnnual] = useState(false)
 
   const tiers = [
@@ -186,17 +182,30 @@ export default function PricingSection({ onContactSales }: PricingSectionProps) 
                 </div>
 
                 {/* CTA */}
-                <Button
-                  variant={tier.popular ? 'primary' : 'ghost'}
-                  size="lg"
-                  className={`w-full ${!tier.popular ? 'bg-white border-2 border-gray-300 text-gray-900 hover:border-gray-900' : ''}`}
-                  href={tier.cta !== 'Contact Sales' ? 'https://calendly.com/galateanulorenzo/30min' : undefined}
-                  target={tier.cta !== 'Contact Sales' ? '_blank' : undefined}
-                  rel={tier.cta !== 'Contact Sales' ? 'noopener noreferrer' : undefined}
-                  onClick={tier.cta === 'Contact Sales' ? onContactSales : undefined}
-                >
-                  {tier.cta}
-                </Button>
+                {tier.cta === 'Contact Sales' ? (
+                  <button
+                    data-tally-open="q44KEd"
+                    data-tally-width="600"
+                    data-tally-overlay="1"
+                    data-tally-auto-close="3000"
+                    data-tally-emoji-text="👋"
+                    data-tally-emoji-animation="wave"
+                    className="w-full px-8 py-4 bg-white border-2 border-gray-300 text-gray-900 hover:border-gray-900 font-semibold rounded-xl transition-all duration-300"
+                  >
+                    {tier.cta}
+                  </button>
+                ) : (
+                  <Button
+                    variant={tier.popular ? 'primary' : 'ghost'}
+                    size="lg"
+                    className={`w-full ${!tier.popular ? 'bg-white border-2 border-gray-300 text-gray-900 hover:border-gray-900' : ''}`}
+                    href="https://calendly.com/galateanulorenzo/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {tier.cta}
+                  </Button>
+                )}
               </div>
             </motion.div>
           ))}
