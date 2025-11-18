@@ -186,6 +186,9 @@ export default function PricingSection() {
                   variant={tier.popular ? 'primary' : 'ghost'}
                   size="lg"
                   className={`w-full ${!tier.popular ? 'bg-white border-2 border-gray-300 text-gray-900 hover:border-gray-900' : ''}`}
+                  href={tier.cta !== 'Contact Sales' ? 'https://calendly.com/galateanulorenzo/30min' : 'mailto:contact@receptai.io'}
+                  target={tier.cta !== 'Contact Sales' ? '_blank' : undefined}
+                  rel={tier.cta !== 'Contact Sales' ? 'noopener noreferrer' : undefined}
                 >
                   {tier.cta}
                 </Button>

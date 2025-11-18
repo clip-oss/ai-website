@@ -10,6 +10,8 @@ interface ButtonProps {
   className?: string
   onClick?: () => void
   href?: string
+  target?: string
+  rel?: string
 }
 
 export default function Button({
@@ -18,7 +20,9 @@ export default function Button({
   size = 'md',
   className,
   onClick,
-  href
+  href,
+  target,
+  rel
 }: ButtonProps) {
   const baseStyles = 'font-semibold rounded-xl transition-all duration-300 inline-flex items-center justify-center gap-2'
 
@@ -40,6 +44,8 @@ export default function Button({
   return (
     <Component
       href={href}
+      target={target}
+      rel={rel}
       onClick={onClick}
       className={cn(baseStyles, variants[variant], sizes[size], className)}
       whileHover={{ scale: 1.02 }}

@@ -155,7 +155,13 @@ export default function ComparisonTable() {
               <p className="text-gray-600 mb-6">
                 Plus: Capture 100% of calls, never miss revenue, scale instantly
               </p>
-              <Button variant="primary" size="xl">
+              <Button
+                variant="primary"
+                size="xl"
+                href="https://calendly.com/galateanulorenzo/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Start Saving Today
               </Button>
             </div>

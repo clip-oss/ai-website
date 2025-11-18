@@ -58,7 +58,13 @@ export default function Navbar() {
             <a href="tel:+15551234567" className="text-primary font-semibold hover:underline">
               (555) 123-4567
             </a>
-            <Button variant="primary" size="md">
+            <Button
+              variant="primary"
+              size="md"
+              href="https://calendly.com/galateanulorenzo/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Book Free Demo
             </Button>
           </div>
@@ -101,7 +107,14 @@ export default function Navbar() {
                 <a href="tel:+15551234567" className="block text-primary font-semibold text-center">
                   (555) 123-4567
                 </a>
-                <Button variant="primary" size="md" className="w-full">
+                <Button
+                  variant="primary"
+                  size="md"
+                  className="w-full"
+                  href="https://calendly.com/galateanulorenzo/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Book Free Demo
                 </Button>
               </div>

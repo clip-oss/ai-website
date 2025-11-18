@@ -148,6 +148,9 @@ export default function ServicesGrid() {
                     variant={service.featured ? 'primary' : 'ghost'}
                     size="lg"
                     className={`w-full ${!service.featured ? 'bg-white border-2 border-gray-300 text-gray-900 hover:border-gray-900' : ''}`}
+                    href={service.featured ? 'https://calendly.com/galateanulorenzo/30min' : '#services'}
+                    target={service.featured ? '_blank' : undefined}
+                    rel={service.featured ? 'noopener noreferrer' : undefined}
                   >
                     {service.featured ? 'Get Started' : 'Learn More'}
                   </Button>

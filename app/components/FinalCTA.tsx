@@ -71,10 +71,17 @@ export default function FinalCTA() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
           >
-            <Button variant="secondary" size="xl" className="bg-white text-primary hover:bg-white hover:scale-105 border-0">
+            <Button
+              variant="secondary"
+              size="xl"
+              className="bg-white text-primary hover:bg-white hover:scale-105 border-0"
+              href="https://calendly.com/galateanulorenzo/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Book Free Demo
             </Button>
-            <Button variant="secondary" size="xl" className="group">
+            <Button variant="secondary" size="xl" className="group" href="tel:+15551234567">
               <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               Call Now: (555) 123-4567
             </Button>

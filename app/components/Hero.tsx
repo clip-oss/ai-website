@@ -112,13 +112,16 @@ export default function Hero() {
               transition={{ duration: 2, repeat: Infinity }}
               className="rounded-xl"
             >
-              <motion.button
+              <motion.a
+                href="https://calendly.com/galateanulorenzo/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-auto px-12 py-5 text-xl font-semibold rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-2xl hover:shadow-primary/50 transition-all duration-300"
+                className="w-full sm:w-auto px-12 py-5 text-xl font-semibold rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-2xl hover:shadow-primary/50 transition-all duration-300 inline-block text-center"
               >
                 Book Free Demo
-              </motion.button>
+              </motion.a>
             </motion.div>
 
             <motion.button
