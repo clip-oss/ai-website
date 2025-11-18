@@ -112,7 +112,13 @@ export default function HowItWorks() {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="hidden lg:block text-center mt-16"
         >
-          <Button variant="primary" size="xl">
+          <Button
+            variant="primary"
+            size="xl"
+            href="https://calendly.com/galateanulorenzo/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Start Your 7-Day Journey
           </Button>
         </motion.div>
