@@ -143,24 +143,24 @@ export default function ComparisonTable() {
           className="hidden lg:block overflow-hidden rounded-3xl shadow-2xl bg-white"
         >
           {/* Table Header */}
-          <div className="grid grid-cols-4 gap-4 p-6 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
+          <div className="grid gap-6 p-8 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200" style={{ gridTemplateColumns: '1.8fr 1fr 1fr 1.5fr' }}>
             <div className="text-sm font-semibold text-gray-600"></div>
-            <div className="text-center">
+            <div className="text-center px-2">
               <p className="text-sm font-semibold text-gray-600 mb-1">Traditional</p>
               <p className="text-xs text-gray-500">Receptionist</p>
             </div>
-            <div className="text-center">
+            <div className="text-center px-2">
               <p className="text-sm font-semibold text-gray-600 mb-1">Answering</p>
               <p className="text-xs text-gray-500">Service</p>
             </div>
-            <div className="text-center relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 -translate-y-full">
+            <div className="text-center relative px-2">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 -translate-y-full whitespace-nowrap">
                 <div className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
                   <Zap className="w-3 h-3" />
                   BEST VALUE
                 </div>
               </div>
-              <p className="text-sm font-bold text-primary mb-1">ReceptAI</p>
+              <p className="text-base font-bold text-primary mb-1">ReceptAI</p>
               <p className="text-xs text-gray-600">AI Solution</p>
             </div>
           </div>
@@ -174,20 +174,21 @@ export default function ComparisonTable() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05, duration: 0.5 }}
-                className="grid grid-cols-4 gap-4 p-6 hover:bg-blue-50/30 transition-colors duration-300"
+                className="grid gap-6 p-6 hover:bg-blue-50/30 transition-colors duration-300"
+                style={{ gridTemplateColumns: '1.8fr 1fr 1fr 1.5fr' }}
               >
                 <div className="font-semibold text-gray-900 flex items-center">
                   {row.feature}
                 </div>
-                <div className="text-center text-sm text-gray-600 flex items-center justify-center">
+                <div className="text-center text-sm text-gray-600 flex items-center justify-center px-2">
                   {row.traditional}
                 </div>
-                <div className="text-center text-sm text-gray-600 flex items-center justify-center">
+                <div className="text-center text-sm text-gray-600 flex items-center justify-center px-2">
                   {row.answering}
                 </div>
-                <div className="text-center">
-                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-50 to-emerald-50 px-4 py-2 rounded-lg border border-green-200">
-                    <Check className="w-4 h-4 text-green-600" />
+                <div className="flex items-center justify-center px-2">
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-50 to-emerald-50 px-4 py-2 rounded-lg border border-green-200 whitespace-nowrap">
+                    <Check className="w-4 h-4 text-green-600 flex-shrink-0" />
                     <span className="text-sm font-semibold text-gray-900">{row.receptai}</span>
                   </div>
                 </div>
