@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import MetricsBar from './components/MetricsBar'
 import ProblemSection from './components/ProblemSection'
 import AIReceptionistSection from './components/AIReceptionistSection'
 import ServicesGrid from './components/ServicesGrid'
@@ -24,7 +23,6 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero onWatchDemo={() => setIsDemoModalOpen(true)} />
-      <MetricsBar />
       <ProblemSection />
       <AIReceptionistSection onWatchDemo={() => setIsDemoModalOpen(true)} />
       <ServicesGrid />

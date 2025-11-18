@@ -148,15 +148,15 @@ export default function Hero({ onWatchDemo }: HeroProps) {
           >
             <div className="flex items-center gap-2 text-gray-600">
               <Check className="w-4 lg:w-5 h-4 lg:h-5 text-green-500" />
-              <span>2,500+ Calls Answered</span>
+              <span>24/7 Availability</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
               <Check className="w-4 lg:w-5 h-4 lg:h-5 text-green-500" />
-              <span>15+ Happy Businesses</span>
+              <span>7-Day Setup</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
               <Check className="w-4 lg:w-5 h-4 lg:h-5 text-green-500" />
-              <span>99.9% Uptime</span>
+              <span>30-Day Money Back</span>
             </div>
           </motion.div>
         </motion.div>

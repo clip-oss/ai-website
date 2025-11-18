@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check, MessageCircle, Flame, Clock } from 'lucide-react'
+import { Check, MessageCircle, Clock } from 'lucide-react'
 import Button from './Button'
 
 export default function FinalCTA() {
@@ -100,7 +100,7 @@ export default function FinalCTA() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-4 lg:gap-6 mb-6 lg:mb-12"
+            className="flex flex-wrap justify-center gap-4 lg:gap-6"
           >
             {trustIndicators.map((indicator, index) => (
               <div key={index} className="flex items-center gap-2 text-white/90">
@@ -108,24 +108,6 @@ export default function FinalCTA() {
                 <span className="text-xs lg:text-base font-medium">{indicator.text}</span>
               </div>
             ))}
-          </motion.div>
-
-          {/* Small Stats - HIDDEN ON MOBILE */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-            className="hidden lg:flex flex-wrap justify-center gap-8 text-white/80 text-sm"
-          >
-            <div className="flex items-center gap-2">
-              <Flame className="w-4 h-4 text-orange-300" />
-              <span>3 businesses signed up today</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-blue-300" />
-              <span>Average setup time: 5.2 days</span>
-            </div>
           </motion.div>
         </motion.div>
       </div>
