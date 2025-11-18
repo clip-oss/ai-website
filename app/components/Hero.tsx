@@ -1,16 +1,62 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check, Play, Phone, Calendar, MessageSquare, CheckCircle2 } from 'lucide-react'
+import { Check, Play, Phone, Calendar, MessageSquare, CheckCircle2, Sparkles } from 'lucide-react'
 import Button from './Button'
 
 export default function Hero() {
+  // Generate floating particles
+  const particles = Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    delay: Math.random() * 5,
+    duration: 8 + Math.random() * 4,
+  }))
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-      {/* Animated Background */}
+      {/* Animated Background with slower transitions */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-secondary/20 to-primary/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        <motion.div
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-secondary/20 to-primary/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1.1, 1, 1.1],
+            opacity: [0.5, 0.3, 0.5]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+        />
+
+        {/* Floating Particles */}
+        {particles.map((particle) => (
+          <motion.div
+            key={particle.id}
+            className="absolute w-1 h-1 bg-white/40 rounded-full"
+            style={{
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+            }}
+            animate={{
+              y: [-20, -60, -20],
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid lg:grid-cols-2 gap-12 items-center">
@@ -21,9 +67,10 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="text-center lg:text-left"
         >
-          {/* Headline */}
+          {/* Headline - 20% larger with drop shadow */}
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 leading-[1.1]"
+            style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -37,7 +84,7 @@ export default function Hero() {
 
           {/* Subheadline */}
           <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed"
+            className="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -47,20 +94,41 @@ export default function Hero() {
             <span className="font-semibold text-gray-900">Save $100K+ annually.</span> Setup in 7 days.
           </motion.p>
 
-          {/* CTAs */}
+          {/* CTAs - Enhanced with glow */}
           <motion.div
             className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <Button variant="primary" size="xl">
-              Book Free Demo
-            </Button>
-            <Button variant="secondary" size="xl">
+            <motion.div
+              animate={{
+                boxShadow: [
+                  '0 0 20px rgba(37, 99, 235, 0.3)',
+                  '0 0 40px rgba(139, 92, 246, 0.5)',
+                  '0 0 20px rgba(37, 99, 235, 0.3)',
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="rounded-xl"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto px-12 py-5 text-xl font-semibold rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-2xl hover:shadow-primary/50 transition-all duration-300"
+              >
+                Book Free Demo
+              </motion.button>
+            </motion.div>
+
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-10 py-5 text-xl font-semibold rounded-xl bg-white/80 backdrop-blur-md text-gray-900 border-2 border-white/40 hover:bg-white hover:border-gray-300 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+            >
               <Play className="w-5 h-5" />
               Watch Demo
-            </Button>
+            </motion.button>
           </motion.div>
 
           {/* Trust Indicators */}
@@ -85,21 +153,24 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Visual */}
+        {/* Right Visual - Enhanced */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4, duration: 1 }}
           className="relative"
         >
+          {/* Glow effect around phone */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-2xl" />
+
           {/* Main Phone Mockup */}
           <div className="relative z-10 bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 shadow-2xl border border-gray-700">
             <div className="space-y-4">
               {/* Incoming Call */}
               <motion.div
                 className="flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
                   <Phone className="w-6 h-6 text-white" />
@@ -113,8 +184,8 @@ export default function Hero() {
               {/* AI Processing */}
               <motion.div
                 className="bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl p-4 border border-primary/30"
-                animate={{ scale: [1, 1.02, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                animate={{ scale: [1, 1.01, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
@@ -125,56 +196,80 @@ export default function Hero() {
                 </p>
               </motion.div>
 
-              {/* Booking Confirmed */}
+              {/* Booking Confirmed - POP MORE */}
               <motion.div
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-green-500/50"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-md rounded-2xl p-4 border-2 border-green-400/60 shadow-lg shadow-green-500/20"
+                animate={{
+                  y: [0, -5, 0],
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1, ease: "easeInOut" }}
               >
                 <div className="flex items-center gap-3">
-                  <Calendar className="w-10 h-10 text-green-400" />
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 0.5, delay: 1 }}
+                  >
+                    <Calendar className="w-10 h-10 text-green-300" />
+                  </motion.div>
                   <div>
-                    <p className="text-white font-semibold flex items-center gap-2">
+                    <p className="text-white font-bold flex items-center gap-2">
                       Booking Confirmed
-                      <CheckCircle2 className="w-4 h-4 text-green-400" />
+                      <CheckCircle2 className="w-5 h-5 text-green-300" />
                     </p>
-                    <p className="text-gray-300 text-sm">Tuesday, 2:00 PM</p>
+                    <p className="text-green-200 text-sm font-semibold">Tuesday, 2:00 PM</p>
                   </div>
                 </div>
               </motion.div>
 
-              {/* SMS Sent */}
+              {/* SMS Sent - POP MORE */}
               <motion.div
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-blue-500/50"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
+                className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-md rounded-2xl p-4 border-2 border-blue-400/60 shadow-lg shadow-blue-500/20"
+                animate={{
+                  y: [0, -5, 0],
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1.5, ease: "easeInOut" }}
               >
                 <div className="flex items-center gap-3">
-                  <MessageSquare className="w-10 h-10 text-blue-400" />
+                  <motion.div
+                    animate={{ rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.5, delay: 1.5 }}
+                  >
+                    <MessageSquare className="w-10 h-10 text-blue-300" />
+                  </motion.div>
                   <div>
-                    <p className="text-white font-semibold">SMS Confirmation Sent</p>
-                    <p className="text-gray-300 text-sm">To: (555) 123-4567</p>
+                    <p className="text-white font-bold">SMS Confirmation Sent</p>
+                    <p className="text-blue-200 text-sm font-semibold">To: (555) 123-4567</p>
                   </div>
                 </div>
               </motion.div>
             </div>
           </div>
 
-          {/* Floating Elements */}
+          {/* Floating Elements - Enhanced */}
           <motion.div
-            className="absolute -top-6 -right-6 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl p-4 shadow-xl"
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
+            className="absolute -top-6 -right-6 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl p-4 shadow-2xl"
+            animate={{
+              y: [0, -15, 0],
+              rotate: [0, 5, 0, -5, 0]
+            }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
+            <Sparkles className="absolute top-1 right-1 w-4 h-4 text-white/80" />
             <p className="text-white font-bold text-2xl">24/7</p>
             <p className="text-white/90 text-sm">Always On</p>
           </motion.div>
 
           <motion.div
-            className="absolute -bottom-6 -left-6 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl p-4 shadow-xl"
-            animate={{ y: [0, 15, 0] }}
-            transition={{ duration: 4, repeat: Infinity, delay: 2 }}
+            className="absolute -bottom-6 -left-6 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl p-4 shadow-2xl"
+            animate={{
+              y: [0, 15, 0],
+              rotate: [0, -5, 0, 5, 0]
+            }}
+            transition={{ duration: 5, repeat: Infinity, delay: 2.5, ease: "easeInOut" }}
           >
+            <Sparkles className="absolute top-1 right-1 w-4 h-4 text-white/80" />
             <p className="text-white font-bold text-2xl">$150K+</p>
             <p className="text-white/90 text-sm">Avg. Saved</p>
           </motion.div>
