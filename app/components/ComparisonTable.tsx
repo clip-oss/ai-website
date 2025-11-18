@@ -63,7 +63,7 @@ export default function ComparisonTable() {
   ]
 
   return (
-    <section className="py-32 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-12 lg:py-32 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -71,27 +71,76 @@ export default function ComparisonTable() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8 lg:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 lg:mb-6">
             How ReceptAI
             <br />
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Compares
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base lg:text-xl text-gray-600 max-w-3xl mx-auto">
             See why thousands of businesses are switching to AI
           </p>
         </motion.div>
 
-        {/* Comparison Table */}
+        {/* Mobile: Simplified View - Show only key comparisons */}
+        <div className="lg:hidden space-y-4">
+          {comparisons.slice(0, 5).map((row, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="bg-white rounded-2xl p-4 shadow-lg border border-gray-200"
+            >
+              <h3 className="font-bold text-gray-900 mb-3 text-sm">{row.feature}</h3>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-gray-600">Traditional:</span>
+                  <span className="text-gray-900 font-medium">{row.traditional}</span>
+                </div>
+                <div className="flex items-center justify-between bg-gradient-to-r from-green-50 to-emerald-50 p-2 rounded-lg border border-green-200 text-xs">
+                  <span className="text-gray-900 font-semibold">ReceptAI:</span>
+                  <div className="flex items-center gap-1">
+                    <Check className="w-3 h-3 text-green-600" />
+                    <span className="text-gray-900 font-bold">{row.receptai}</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Mobile CTA */}
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 text-center">
+            <p className="text-xl font-bold text-gray-900 mb-2">
+              Save <span className="text-green-600">$50K+</span> annually
+            </p>
+            <p className="text-gray-600 text-sm mb-4">
+              Capture 100% of calls, never miss revenue
+            </p>
+            <Button
+              variant="primary"
+              size="lg"
+              href="https://calendly.com/galateanulorenzo/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full"
+            >
+              Start Saving Today
+            </Button>
+          </div>
+        </div>
+
+        {/* Desktop: Full Comparison Table */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="overflow-hidden rounded-3xl shadow-2xl bg-white"
+          className="hidden lg:block overflow-hidden rounded-3xl shadow-2xl bg-white"
         >
           {/* Table Header */}
           <div className="grid grid-cols-4 gap-4 p-6 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
@@ -174,7 +223,7 @@ export default function ComparisonTable() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="grid md:grid-cols-3 gap-8 mt-16"
+          className="hidden lg:grid md:grid-cols-3 gap-8 mt-16"
         >
           <div className="text-center p-6 rounded-2xl bg-white shadow-lg">
             <p className="text-4xl font-bold text-primary mb-2">10x</p>

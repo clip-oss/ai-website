@@ -43,9 +43,9 @@ export default function AIReceptionistSection({ onWatchDemo }: AIReceptionistSec
   ]
 
   return (
-    <section className="py-32 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden">
+    <section className="py-12 lg:py-32 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -53,7 +53,7 @@ export default function AIReceptionistSection({ onWatchDemo }: AIReceptionistSec
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 lg:mb-6">
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Meet Your AI
               </span>
@@ -61,14 +61,14 @@ export default function AIReceptionistSection({ onWatchDemo }: AIReceptionistSec
               <span className="text-gray-900">Receptionist</span>
             </h2>
 
-            <p className="text-2xl text-gray-600 mb-12 leading-relaxed">
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-6 lg:mb-12 leading-relaxed">
               Works 24/7. Never sleeps. Never misses a call.
               <br />
               <span className="font-semibold text-gray-900">Sounds completely human.</span>
             </p>
 
-            {/* Features Grid */}
-            <div className="space-y-6 mb-12">
+            {/* Features Grid - Show only 3 on mobile */}
+            <div className="space-y-4 lg:space-y-6 mb-6 lg:mb-12">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
@@ -76,26 +76,26 @@ export default function AIReceptionistSection({ onWatchDemo }: AIReceptionistSec
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className="flex items-start gap-4 group"
+                  className={`flex items-start gap-3 lg:gap-4 group ${index > 2 ? 'hidden lg:flex' : ''}`}
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-6 h-6 text-white" />
+                  <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="w-5 lg:w-6 h-5 lg:h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <h3 className="text-base lg:text-lg font-bold text-gray-900 mb-1">{feature.title}</h3>
+                    <p className="text-sm lg:text-base text-gray-600">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            {/* Audio Demo */}
+            {/* Audio Demo - HIDDEN ON MOBILE */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-6 border border-primary/20 mb-8"
+              className="hidden lg:block bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-6 border border-primary/20 mb-8"
             >
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
@@ -116,13 +116,13 @@ export default function AIReceptionistSection({ onWatchDemo }: AIReceptionistSec
             </Button>
           </motion.div>
 
-          {/* Right Visual - Animated Phone Interface */}
+          {/* Right Visual - Animated Phone Interface - HIDDEN ON MOBILE */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative"
+            className="relative hidden lg:block"
           >
             {/* Main Dashboard */}
             <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-200">

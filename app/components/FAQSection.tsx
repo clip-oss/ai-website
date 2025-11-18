@@ -43,7 +43,7 @@ export default function FAQSection() {
   ]
 
   return (
-    <section id="faq" className="py-32 bg-white">
+    <section id="faq" className="py-12 lg:py-32 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -51,9 +51,9 @@ export default function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8 lg:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 lg:mb-6">
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Common
             </span>{' '}
@@ -62,7 +62,7 @@ export default function FAQSection() {
         </motion.div>
 
         {/* FAQ Items */}
-        <div className="space-y-4">
+        <div className="space-y-3 lg:space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -70,22 +70,23 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05, duration: 0.4 }}
+              className={index > 3 ? 'hidden lg:block' : ''}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full bg-gray-50 hover:bg-gray-100 rounded-2xl p-6 transition-all duration-300 text-left"
+                className="w-full bg-gray-50 hover:bg-gray-100 rounded-xl lg:rounded-2xl p-4 lg:p-6 transition-all duration-300 text-left"
               >
-                <div className="flex items-center justify-between gap-4">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 flex-1">
+                <div className="flex items-center justify-between gap-3 lg:gap-4">
+                  <h3 className="text-sm md:text-base lg:text-xl font-bold text-gray-900 flex-1">
                     {faq.question}
                   </h3>
-                  <div className={`w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${
+                  <div className={`w-7 lg:w-8 h-7 lg:h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}>
                     {openIndex === index ? (
-                      <Minus className="w-5 h-5 text-white" />
+                      <Minus className="w-4 lg:w-5 h-4 lg:h-5 text-white" />
                     ) : (
-                      <Plus className="w-5 h-5 text-white" />
+                      <Plus className="w-4 lg:w-5 h-4 lg:h-5 text-white" />
                     )}
                   </div>
                 </div>
@@ -99,7 +100,7 @@ export default function FAQSection() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-600 text-lg leading-relaxed mt-4 pt-4 border-t border-gray-200">
+                      <p className="text-gray-600 text-sm lg:text-lg leading-relaxed mt-3 lg:mt-4 pt-3 lg:pt-4 border-t border-gray-200">
                         {faq.answer}
                       </p>
                     </motion.div>
@@ -108,6 +109,13 @@ export default function FAQSection() {
               </button>
             </motion.div>
           ))}
+        </div>
+
+        {/* Mobile - Show More Link */}
+        <div className="lg:hidden mt-6 text-center">
+          <a href="#faq" className="text-primary font-semibold text-sm">
+            View All {faqs.length} Questions
+          </a>
         </div>
       </div>
     </section>

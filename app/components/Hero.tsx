@@ -19,9 +19,9 @@ export default function Hero({ onWatchDemo }: HeroProps) {
   }))
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <section className="relative min-h-[85vh] lg:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       {/* Animated Background with slower transitions */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden hidden lg:block">
         <motion.div
           className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl"
           animate={{
@@ -63,7 +63,7 @@ export default function Hero({ onWatchDemo }: HeroProps) {
         ))}
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -73,7 +73,7 @@ export default function Hero({ onWatchDemo }: HeroProps) {
         >
           {/* Headline - 20% larger with drop shadow */}
           <motion.h1
-            className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 leading-[1.1]"
+            className="text-4xl md:text-6xl lg:text-9xl font-bold mb-4 lg:mb-6 leading-[1.1]"
             style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ export default function Hero({ onWatchDemo }: HeroProps) {
 
           {/* Subheadline */}
           <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed"
+            className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-6 lg:mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -100,7 +100,7 @@ export default function Hero({ onWatchDemo }: HeroProps) {
 
           {/* CTAs - Enhanced with glow */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start"
+            className="flex flex-col sm:flex-row gap-4 mb-8 lg:mb-12 justify-center lg:justify-start"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
@@ -122,7 +122,7 @@ export default function Hero({ onWatchDemo }: HeroProps) {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-auto px-12 py-5 text-xl font-semibold rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-2xl hover:shadow-primary/50 transition-all duration-300 inline-block text-center"
+                className="w-full sm:w-auto px-8 lg:px-12 py-4 lg:py-5 text-lg lg:text-xl font-semibold rounded-xl bg-gradient-to-r from-primary to-secondary text-white shadow-2xl hover:shadow-primary/50 transition-all duration-300 inline-block text-center"
               >
                 Book Free Demo
               </motion.a>
@@ -132,7 +132,7 @@ export default function Hero({ onWatchDemo }: HeroProps) {
               onClick={onWatchDemo}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="px-10 py-5 text-xl font-semibold rounded-xl bg-white/80 backdrop-blur-md text-gray-900 border-2 border-white/40 hover:bg-white hover:border-gray-300 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+              className="hidden lg:flex px-10 py-5 text-xl font-semibold rounded-xl bg-white/80 backdrop-blur-md text-gray-900 border-2 border-white/40 hover:bg-white hover:border-gray-300 transition-all duration-300 items-center justify-center gap-2 shadow-lg"
             >
               <Play className="w-5 h-5" />
               Watch Demo
@@ -141,32 +141,32 @@ export default function Hero({ onWatchDemo }: HeroProps) {
 
           {/* Trust Indicators */}
           <motion.div
-            className="flex flex-wrap gap-6 justify-center lg:justify-start text-sm"
+            className="flex flex-wrap gap-4 lg:gap-6 justify-center lg:justify-start text-xs lg:text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
             <div className="flex items-center gap-2 text-gray-600">
-              <Check className="w-5 h-5 text-green-500" />
+              <Check className="w-4 lg:w-5 h-4 lg:h-5 text-green-500" />
               <span>2,500+ Calls Answered</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <Check className="w-5 h-5 text-green-500" />
+              <Check className="w-4 lg:w-5 h-4 lg:h-5 text-green-500" />
               <span>15+ Happy Businesses</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <Check className="w-5 h-5 text-green-500" />
+              <Check className="w-4 lg:w-5 h-4 lg:h-5 text-green-500" />
               <span>99.9% Uptime</span>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Right Visual - Enhanced */}
+        {/* Right Visual - Enhanced - HIDDEN ON MOBILE */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4, duration: 1 }}
-          className="relative"
+          className="relative hidden lg:block"
         >
           {/* Glow effect around phone */}
           <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-2xl" />
@@ -284,9 +284,9 @@ export default function Hero({ onWatchDemo }: HeroProps) {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - HIDDEN ON MOBILE */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:block"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >

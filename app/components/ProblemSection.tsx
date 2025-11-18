@@ -33,7 +33,7 @@ export default function ProblemSection() {
   ]
 
   return (
-    <section className="py-32 bg-gradient-to-br from-dark via-dark-lighter to-dark relative overflow-hidden">
+    <section className="py-12 lg:py-32 bg-gradient-to-br from-dark via-dark-lighter to-dark relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
 
@@ -44,9 +44,9 @@ export default function ProblemSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-8 lg:mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 lg:mb-6 leading-tight">
             How Much Money Are You
             <br />
             <span className="bg-gradient-to-r from-red-400 to-orange-500 bg-clip-text text-transparent">
@@ -56,7 +56,7 @@ export default function ProblemSection() {
         </motion.div>
 
         {/* Problem Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {problems.map((problem, index) => (
             <motion.div
               key={index}
@@ -64,23 +64,23 @@ export default function ProblemSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
-              className="group"
+              className={`group ${index > 0 ? 'hidden lg:block' : ''}`}
             >
-              <div className={`bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:border-white/30 transition-all duration-300 hover:shadow-2xl ${problem.shadowColor} hover:-translate-y-2`}>
+              <div className={`bg-white/5 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/10 hover:border-white/30 transition-all duration-300 hover:shadow-2xl ${problem.shadowColor} hover:-translate-y-2`}>
                 {/* Icon */}
-                <div className={`w-20 h-20 bg-gradient-to-br ${problem.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <problem.icon className="w-10 h-10 text-white" strokeWidth={1.5} />
+                <div className={`w-16 lg:w-20 h-16 lg:h-20 bg-gradient-to-br ${problem.color} rounded-2xl flex items-center justify-center mb-4 lg:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <problem.icon className="w-8 lg:w-10 h-8 lg:h-10 text-white" strokeWidth={1.5} />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-white mb-4">{problem.title}</h3>
-                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-3 lg:mb-4">{problem.title}</h3>
+                <p className="text-gray-300 text-base lg:text-lg leading-relaxed mb-4 lg:mb-6">
                   {problem.description}
                 </p>
 
                 {/* Stat */}
-                <div className={`inline-block px-6 py-3 bg-gradient-to-r ${problem.color} rounded-xl`}>
-                  <p className="text-white font-bold text-xl">{problem.stat}</p>
+                <div className={`inline-block px-4 lg:px-6 py-2 lg:py-3 bg-gradient-to-r ${problem.color} rounded-xl`}>
+                  <p className="text-white font-bold text-lg lg:text-xl">{problem.stat}</p>
                 </div>
               </div>
             </motion.div>
@@ -93,9 +93,9 @@ export default function ProblemSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-center mt-16"
+          className="text-center mt-8 lg:mt-16"
         >
-          <p className="text-2xl text-gray-300">
+          <p className="text-lg lg:text-2xl text-gray-300">
             That's over <span className="text-white font-bold">$200,000</span> walking out the door every single year.
           </p>
         </motion.div>

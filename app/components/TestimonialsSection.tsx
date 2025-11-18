@@ -1,10 +1,13 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { TrendingUp, Phone, Star, Users, DollarSign, Smile } from 'lucide-react'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { TrendingUp, Phone, Star, Users, DollarSign, Smile, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Quote } from 'lucide-react'
 
 export default function TestimonialsSection() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
   const testimonials = [
     {
       quote: "ReceptAI has transformed our business. We went from missing 15-20 calls a week to capturing 100%. In the first month alone, we booked $47,000 in new appointments we would have lost. Best investment we've ever made.",
@@ -50,8 +53,16 @@ export default function TestimonialsSection() {
     },
   ]
 
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+  }
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
+
   return (
-    <section className="py-32 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-12 lg:py-32 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -59,22 +70,102 @@ export default function TestimonialsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-8 lg:mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 lg:mb-6">
             Trusted By Businesses
             <br />
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Across America
             </span>
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-base lg:text-xl text-gray-600">
             Real results from real businesses
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        {/* Mobile: Carousel */}
+        <div className="lg:hidden relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200"
+            >
+              {/* Quote Icon */}
+              <Quote className="w-10 h-10 text-primary/20 mb-3" />
+
+              {/* Quote */}
+              <p className="text-gray-700 text-sm leading-relaxed mb-6">
+                "{testimonials[currentIndex].quote}"
+              </p>
+
+              {/* Metrics */}
+              <div className="space-y-2 mb-6">
+                {testimonials[currentIndex].metrics.map((metric, i) => (
+                  <div key={i} className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
+                    <metric.icon className={`w-4 h-4 ${metric.color} flex-shrink-0`} />
+                    <span className="text-xs font-medium text-gray-700">{metric.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Business Info */}
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-200">
+                {/* Avatar */}
+                <div className={`w-12 h-12 bg-gradient-to-br ${testimonials[currentIndex].gradient} rounded-full flex items-center justify-center flex-shrink-0`}>
+                  <span className="text-white font-bold text-sm">{testimonials[currentIndex].initials}</span>
+                </div>
+
+                {/* Info */}
+                <div>
+                  <p className="font-bold text-gray-900 text-sm">{testimonials[currentIndex].owner}</p>
+                  <p className="text-xs text-gray-600">{testimonials[currentIndex].role}</p>
+                  <p className="text-xs font-semibold text-primary">{testimonials[currentIndex].business}</p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Carousel Controls */}
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <button
+              onClick={prevTestimonial}
+              className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center border border-gray-200 hover:bg-gray-50 transition-colors"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+
+            {/* Dots */}
+            <div className="flex gap-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                  }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextTestimonial}
+              className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center border border-gray-200 hover:bg-gray-50 transition-colors"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-5 h-5 text-gray-600" />
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop: Grid */}
+        <div className="hidden lg:grid lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}

@@ -13,13 +13,13 @@ export default function FinalCTA() {
   ]
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-16 lg:py-32 overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary animate-gradient" />
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0">
+      {/* Floating Particles - HIDDEN ON MOBILE */}
+      <div className="hidden lg:block absolute inset-0">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
@@ -50,16 +50,16 @@ export default function FinalCTA() {
           className="text-center"
         >
           {/* Headline */}
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 lg:mb-6 leading-tight">
             Stop Losing $100K+
             <br />
             Every Year
           </h2>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
+          <p className="text-base md:text-xl lg:text-2xl text-white/90 mb-8 lg:mb-12 leading-relaxed">
             Join 15+ businesses already using AI to capture every customer call.
-            <br />
+            <br className="hidden lg:block" />
             <span className="font-semibold">Setup in 7 days. See ROI in week one.</span>
           </p>
 
@@ -69,7 +69,7 @@ export default function FinalCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center mb-8 lg:mb-12"
           >
             <Button
               variant="secondary"
@@ -100,23 +100,23 @@ export default function FinalCTA() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-6 mb-12"
+            className="flex flex-wrap justify-center gap-4 lg:gap-6 mb-6 lg:mb-12"
           >
             {trustIndicators.map((indicator, index) => (
               <div key={index} className="flex items-center gap-2 text-white/90">
-                <indicator.icon className="w-5 h-5" />
-                <span className="font-medium">{indicator.text}</span>
+                <indicator.icon className="w-4 lg:w-5 h-4 lg:h-5" />
+                <span className="text-xs lg:text-base font-medium">{indicator.text}</span>
               </div>
             ))}
           </motion.div>
 
-          {/* Small Stats */}
+          {/* Small Stats - HIDDEN ON MOBILE */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-8 text-white/80 text-sm"
+            className="hidden lg:flex flex-wrap justify-center gap-8 text-white/80 text-sm"
           >
             <div className="flex items-center gap-2">
               <Flame className="w-4 h-4 text-orange-300" />
