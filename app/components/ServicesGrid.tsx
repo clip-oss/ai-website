@@ -21,7 +21,7 @@ export default function ServicesGrid() {
       featured: true,
       gradient: 'from-blue-500 to-blue-600',
       bgGradient: 'from-blue-50 to-blue-100',
-      learnMoreLink: '#phone-receptionist',
+      learnMoreLink: '/services/phone-receptionist',
     },
     {
       icon: MessageCircle,
@@ -38,7 +38,7 @@ export default function ServicesGrid() {
       featured: false,
       gradient: 'from-purple-500 to-purple-600',
       bgGradient: 'from-purple-50 to-purple-100',
-      learnMoreLink: '#website-chatbot',
+      learnMoreLink: '/services/website-chatbot',
     },
     {
       icon: Workflow,
@@ -55,7 +55,7 @@ export default function ServicesGrid() {
       featured: false,
       gradient: 'from-indigo-500 to-indigo-600',
       bgGradient: 'from-indigo-50 to-indigo-100',
-      learnMoreLink: '#workflow-automation',
+      learnMoreLink: '/services/workflow-automation',
     },
     {
       icon: TrendingUp,
@@ -72,7 +72,7 @@ export default function ServicesGrid() {
       featured: false,
       gradient: 'from-green-500 to-green-600',
       bgGradient: 'from-green-50 to-green-100',
-      learnMoreLink: '#lead-generation',
+      learnMoreLink: '/services/lead-generation',
     },
   ]
 

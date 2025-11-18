@@ -7,7 +7,6 @@ import MetricsBar from './components/MetricsBar'
 import ProblemSection from './components/ProblemSection'
 import AIReceptionistSection from './components/AIReceptionistSection'
 import ServicesGrid from './components/ServicesGrid'
-import ServiceDetails from './components/ServiceDetails'
 import ComparisonTable from './components/ComparisonTable'
 import HowItWorks from './components/HowItWorks'
 import PricingSection from './components/PricingSection'
@@ -31,7 +30,6 @@ export default function Home() {
       <ProblemSection />
       <AIReceptionistSection onWatchDemo={() => setIsDemoModalOpen(true)} />
       <ServicesGrid />
-      <ServiceDetails />
       <ComparisonTable />
       <HowItWorks />
       <PricingSection onContactSales={() => setIsContactModalOpen(true)} />

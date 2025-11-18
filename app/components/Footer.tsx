@@ -6,11 +6,11 @@ import Logo from './Logo'
 export default function Footer() {
   const footerLinks = {
     services: [
-      { name: 'AI Phone Receptionist', href: '#phone-receptionist' },
-      { name: 'AI Website Chatbot', href: '#website-chatbot' },
-      { name: 'Workflow Automation', href: '#workflow-automation' },
-      { name: 'Lead Generation', href: '#lead-generation' },
-      { name: 'View All Services', href: '#services' },
+      { name: 'AI Phone Receptionist', href: '/services/phone-receptionist' },
+      { name: 'AI Website Chatbot', href: '/services/website-chatbot' },
+      { name: 'Workflow Automation', href: '/services/workflow-automation' },
+      { name: 'Lead Generation', href: '/services/lead-generation' },
+      { name: 'View All Services', href: '/#services' },
     ],
     company: [
       { name: 'How It Works', href: '#how-it-works' },
