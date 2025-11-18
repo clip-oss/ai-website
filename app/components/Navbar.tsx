@@ -55,9 +55,6 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="tel:+15551234567" className="text-primary font-semibold hover:underline">
-              (555) 123-4567
-            </a>
             <Button
               variant="primary"
               size="md"
@@ -104,9 +101,6 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="pt-4 space-y-3">
-                <a href="tel:+15551234567" className="block text-primary font-semibold text-center">
-                  (555) 123-4567
-                </a>
                 <Button
                   variant="primary"
                   size="md"

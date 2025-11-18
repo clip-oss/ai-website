@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check, Phone, Flame, Clock } from 'lucide-react'
+import { Check, MessageCircle, Flame, Clock } from 'lucide-react'
 import Button from './Button'
 
 export default function FinalCTA() {
@@ -81,9 +81,16 @@ export default function FinalCTA() {
             >
               Book Free Demo
             </Button>
-            <Button variant="secondary" size="xl" className="group" href="tel:+15551234567">
-              <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              Call Now: (555) 123-4567
+            <Button
+              variant="secondary"
+              size="xl"
+              className="group"
+              href="https://wa.me/37378093320?text=Hi!%20I'm%20interested%20in%20ReceptAI"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              Chat on WhatsApp
             </Button>
           </motion.div>
 

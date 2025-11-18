@@ -4,7 +4,11 @@ import { motion } from 'framer-motion'
 import { Phone, Calendar, MessageSquare, Database, HelpCircle, FileText, Volume2 } from 'lucide-react'
 import Button from './Button'
 
-export default function AIReceptionistSection() {
+interface AIReceptionistSectionProps {
+  onWatchDemo: () => void
+}
+
+export default function AIReceptionistSection({ onWatchDemo }: AIReceptionistSectionProps) {
   const features = [
     {
       icon: Phone,
@@ -101,13 +105,13 @@ export default function AIReceptionistSection() {
                   <p className="text-lg font-semibold text-gray-900 mb-1">Hear how natural it sounds</p>
                   <p className="text-sm text-gray-600">Listen to a real AI conversation</p>
                 </div>
-                <Button variant="primary" size="md">
+                <Button variant="primary" size="md" onClick={onWatchDemo}>
                   Play Demo
                 </Button>
               </div>
             </motion.div>
 
-            <Button variant="primary" size="xl" className="w-full sm:w-auto">
+            <Button variant="primary" size="xl" className="w-full sm:w-auto" onClick={onWatchDemo}>
               See It In Action
             </Button>
           </motion.div>

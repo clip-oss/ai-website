@@ -4,7 +4,11 @@ import { motion } from 'framer-motion'
 import { Check, Play, Phone, Calendar, MessageSquare, CheckCircle2, Sparkles } from 'lucide-react'
 import Button from './Button'
 
-export default function Hero() {
+interface HeroProps {
+  onWatchDemo: () => void
+}
+
+export default function Hero({ onWatchDemo }: HeroProps) {
   // Generate floating particles
   const particles = Array.from({ length: 30 }, (_, i) => ({
     id: i,
@@ -125,6 +129,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.button
+              onClick={onWatchDemo}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="px-10 py-5 text-xl font-semibold rounded-xl bg-white/80 backdrop-blur-md text-gray-900 border-2 border-white/40 hover:bg-white hover:border-gray-300 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"

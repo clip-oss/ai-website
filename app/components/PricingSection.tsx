@@ -5,7 +5,11 @@ import { motion } from 'framer-motion'
 import { Check, CreditCard, Lock, RotateCcw, Phone } from 'lucide-react'
 import Button from './Button'
 
-export default function PricingSection() {
+interface PricingSectionProps {
+  onContactSales: () => void
+}
+
+export default function PricingSection({ onContactSales }: PricingSectionProps) {
   const [isAnnual, setIsAnnual] = useState(false)
 
   const tiers = [
@@ -186,9 +190,10 @@ export default function PricingSection() {
                   variant={tier.popular ? 'primary' : 'ghost'}
                   size="lg"
                   className={`w-full ${!tier.popular ? 'bg-white border-2 border-gray-300 text-gray-900 hover:border-gray-900' : ''}`}
-                  href={tier.cta !== 'Contact Sales' ? 'https://calendly.com/galateanulorenzo/30min' : 'mailto:contact@receptai.io'}
+                  href={tier.cta !== 'Contact Sales' ? 'https://calendly.com/galateanulorenzo/30min' : undefined}
                   target={tier.cta !== 'Contact Sales' ? '_blank' : undefined}
                   rel={tier.cta !== 'Contact Sales' ? 'noopener noreferrer' : undefined}
+                  onClick={tier.cta === 'Contact Sales' ? onContactSales : undefined}
                 >
                   {tier.cta}
                 </Button>

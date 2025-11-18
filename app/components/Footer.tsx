@@ -1,31 +1,26 @@
 'use client'
 
-import { Linkedin, Twitter, Facebook } from 'lucide-react'
+import { Linkedin, Twitter, Facebook, MessageCircle, Mail } from 'lucide-react'
 import Logo from './Logo'
 
 export default function Footer() {
   const footerLinks = {
     services: [
-      { name: 'AI Phone Receptionist', href: '#' },
-      { name: 'AI Website Chatbot', href: '#' },
-      { name: 'Workflow Automation', href: '#' },
-      { name: 'Lead Generation', href: '#' },
+      { name: 'AI Phone Receptionist', href: '#phone-receptionist' },
+      { name: 'AI Website Chatbot', href: '#website-chatbot' },
+      { name: 'Workflow Automation', href: '#workflow-automation' },
+      { name: 'Lead Generation', href: '#lead-generation' },
       { name: 'View All Services', href: '#services' },
     ],
     company: [
-      { name: 'About Us', href: '#' },
       { name: 'How It Works', href: '#how-it-works' },
       { name: 'Pricing', href: '#pricing' },
-      { name: 'Case Studies', href: '#' },
-      { name: 'Blog', href: '#' },
-      { name: 'Careers', href: '#' },
-    ],
-    support: [
-      { name: 'Help Center', href: '#' },
-      { name: 'Contact Us', href: '#' },
-      { name: 'Book Demo', href: '#' },
       { name: 'FAQ', href: '#faq' },
-      { name: 'API Docs', href: '#' },
+      { name: 'Book Demo', href: 'https://calendly.com/galateanulorenzo/30min', external: true },
+    ],
+    legal: [
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Terms of Service', href: '/terms' },
     ],
   }
 
@@ -41,11 +36,32 @@ export default function Footer() {
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
-          <div>
+          <div className="lg:col-span-1">
             <Logo className="mb-4" />
             <p className="text-gray-400 mb-6">
               Never Miss a Call Again
             </p>
+
+            {/* Contact Info */}
+            <div className="space-y-3 mb-6">
+              <a
+                href="https://wa.me/37378093320?text=Hi!%20I'm%20interested%20in%20ReceptAI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp: +373 78 093 320</span>
+              </a>
+              <a
+                href="mailto:lorenzo@receptai.co"
+                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                <span>lorenzo@receptai.co</span>
+              </a>
+            </div>
+
             <div className="flex gap-4">
               {socialLinks.map(({ Icon, href, label }) => (
                 <a
@@ -85,6 +101,8 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     {link.name}
@@ -94,11 +112,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Support Column */}
+          {/* Legal Column */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Support</h4>
+            <h4 className="font-bold text-lg mb-4">Legal</h4>
             <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
+              {footerLinks.legal.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
@@ -120,14 +138,11 @@ export default function Footer() {
             </p>
 
             <div className="flex flex-wrap gap-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="/privacy" className="text-gray-400 hover:text-white transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="/terms" className="text-gray-400 hover:text-white transition-colors">
                 Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                Cookie Policy
               </a>
             </div>
 
